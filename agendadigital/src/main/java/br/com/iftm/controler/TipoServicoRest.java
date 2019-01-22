@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.websocket.server.PathParam;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,8 @@ import br.com.iftm.entity.TipoServico;
 @RequestMapping(value = "/tiposervico") // Nome do servico
 public class TipoServicoRest {
 
-	private TipoServicoBusiness business = new TipoServicoBusinessImpl();
+	@Autowired
+	private TipoServicoBusiness business;
 
 	// create
 	@PostMapping()
