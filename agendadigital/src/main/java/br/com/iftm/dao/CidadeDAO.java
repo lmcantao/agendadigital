@@ -2,7 +2,9 @@ package br.com.iftm.dao;
 
 import java.util.List;
 
+import br.com.iftm.business.BusinessException;
 import br.com.iftm.entity.Cidade;
+import br.com.iftm.enums.Estado;
 
 public interface CidadeDAO {
 
@@ -30,6 +32,17 @@ public interface CidadeDAO {
 	 * @return Lista de {@link Cidade}
 	 */
 	List<Cidade> readByName(String nome);
+
+	/**
+	 * Metodo responsavel por garantir os parametros obrigatórios para que se possa
+	 * recuperar da base de dados os objetos {@link Cidade} usando o estado como
+	 * parametro
+	 * 
+	 * @param nome Parte do nome a ser buscado
+	 * @return Lista de {@link Cidade}
+	 * @throws BusinessException
+	 */
+	List<Cidade> readByState(Estado estado) throws BusinessException;
 
 	/**
 	 * Metodo responsavel por persistir (atualizar) os dados na base o objeto

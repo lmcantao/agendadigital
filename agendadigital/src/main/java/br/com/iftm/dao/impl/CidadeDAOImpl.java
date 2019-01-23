@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.iftm.dao.CidadeDAO;
 import br.com.iftm.entity.Cidade;
+import br.com.iftm.enums.Estado;
 
 @Repository
 public class CidadeDAOImpl implements CidadeDAO {
@@ -38,6 +39,21 @@ public class CidadeDAOImpl implements CidadeDAO {
 		for (Cidade cidade : lista) {
 
 			if (cidade.getNome().toUpperCase().contains(nome.toUpperCase())) {
+				listaRetorno.add(cidade);
+			}
+		}
+
+		return listaRetorno;
+	}
+
+	@Override
+	public List<Cidade> readByState(Estado estado) {
+
+		List<Cidade> listaRetorno = new ArrayList<>();
+
+		for (Cidade cidade : lista) {
+
+			if (cidade.getEstado().equals(estado)) {
 				listaRetorno.add(cidade);
 			}
 		}

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.iftm.business.BusinessException;
 import br.com.iftm.business.CidadeBusiness;
 import br.com.iftm.entity.Cidade;
+import br.com.iftm.enums.Estado;
 
 @RestController
 @RequestMapping(value = "/cidade")
@@ -113,6 +114,30 @@ public class CidadeRest {
 			}
 
 			return ResponseEntity.ok(business.readByName(nome));
+
+		} catch (BusinessException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return ResponseEntity.badRequest().body(e);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return ResponseEntity.badRequest().body(e);
+		}
+	}
+
+	@GetMapping("/filtro/estado")
+	public ResponseEntity<?> readByState(@PathParam("estado") Estado estado) {
+
+		try {
+
+			List<Cidade> read_byEstado = business.readByState(estado);
+
+			if (read_byEstado.isEmpty()) {
+				return ResponseEntity.notFound().build();
+			}
+
+			return ResponseEntity.ok(business.readByState(estado));
 
 		} catch (BusinessException e) {
 			// TODO: handle exception
