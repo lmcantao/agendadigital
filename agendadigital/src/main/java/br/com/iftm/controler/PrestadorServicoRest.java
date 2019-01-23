@@ -16,24 +16,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.iftm.business.BusinessException;
-import br.com.iftm.business.CidadeBusiness;
-import br.com.iftm.entity.Cidade;
-import br.com.iftm.enums.Estado;
+import br.com.iftm.business.PrestadorServicoBusiness;
+import br.com.iftm.entity.PrestadorDeServico;
+import br.com.iftm.entity.Telefone;
 
 @RestController
-@RequestMapping(value = "/cidade")
-public class CidadeRest {
+@RequestMapping(value = "/prestador/servico")
+public class PrestadorServicoRest {
 
 	@Autowired
-	private CidadeBusiness business;
+	private PrestadorServicoBusiness business;
 
 	// create
 	@PostMapping()
-	public ResponseEntity<?> create(@RequestBody Cidade cidade) {
+	public ResponseEntity<?> create(@RequestBody PrestadorDeServico prestador) {
 
 		try {
 
-			return ResponseEntity.ok(business.create(cidade));
+			return ResponseEntity.ok(business.create(prestador));
 		} catch (BusinessException e) {
 			e.printStackTrace();
 
@@ -65,11 +65,11 @@ public class CidadeRest {
 
 	// update
 	@PutMapping
-	public ResponseEntity<?> update(@RequestBody Cidade cidade) {
+	public ResponseEntity<?> update(@RequestBody PrestadorDeServico prestador) {
 
 		try {
 
-			return ResponseEntity.ok(business.update(cidade));
+			return ResponseEntity.ok(business.update(prestador));
 
 		} catch (BusinessException e) {
 			// TODO: handle exception
@@ -107,7 +107,7 @@ public class CidadeRest {
 
 		try {
 
-			List<Cidade> read_byName = business.readByName(nome);
+			List<PrestadorDeServico> read_byName = business.readByName(nome);
 
 			if (read_byName.isEmpty()) {
 				return ResponseEntity.notFound().build();
@@ -126,18 +126,18 @@ public class CidadeRest {
 		}
 	}
 
-	@GetMapping("/filtro/estado")
-	public ResponseEntity<?> readByState(@PathParam("estado") Estado estado) {
+	@GetMapping("/filtro/telefone")
+	public ResponseEntity<?> readByTelefone(@PathParam("telefone") Telefone telefone) {
 
 		try {
 
-			List<Cidade> read_byEstado = business.readByState(estado);
+			List<PrestadorDeServico> listaTelefone = business.readByTelefone(telefone);
 
-			if (read_byEstado == null || read_byEstado.isEmpty()) {
+			if (listaTelefone == null || listaTelefone.isEmpty()) {
 				return ResponseEntity.notFound().build();
 			}
 
-			return ResponseEntity.ok(business.readByState(estado));
+			return ResponseEntity.ok(readByTelefone(telefone));
 
 		} catch (BusinessException e) {
 			// TODO: handle exception

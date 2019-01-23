@@ -1,5 +1,7 @@
 package br.com.iftm.entity;
 
+import java.util.List;
+
 import br.com.iftm.enums.TipoLogradouro;
 
 public class PrestadorDeServico {
@@ -20,9 +22,29 @@ public class PrestadorDeServico {
 
 	private String complemento;
 
-	private String numero;
+	private Integer numero;
 
 	private String email;
+
+	private List<Telefone> telefone;
+
+	private List<TipoServico> tipoServico;
+
+	public List<TipoServico> getTipoServico() {
+		return tipoServico;
+	}
+
+	public void setTipoServico(List<TipoServico> tipoServico) {
+		this.tipoServico = tipoServico;
+	}
+
+	public List<Telefone> getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(List<Telefone> telefone) {
+		this.telefone = telefone;
+	}
 
 	public Integer getCodigo() {
 		return codigo;
@@ -88,11 +110,11 @@ public class PrestadorDeServico {
 		this.complemento = complemento;
 	}
 
-	public String getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(String numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 

@@ -8,6 +8,16 @@ public class Telefone {
 
 	private Integer numero;
 
+	private PrestadorDeServico codPrestadorServico;
+
+	public PrestadorDeServico getCodPrestadorServico() {
+		return codPrestadorServico;
+	}
+
+	public void setCodPrestadorServico(PrestadorDeServico codPrestadorServico) {
+		this.codPrestadorServico = codPrestadorServico;
+	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}

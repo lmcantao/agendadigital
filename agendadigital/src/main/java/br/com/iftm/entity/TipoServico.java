@@ -3,8 +3,8 @@ package br.com.iftm.entity;
 public class TipoServico {
 
 	private Integer codigo;
-	
-	private String nome;
+
+	private String descricao;
 
 	public Integer getCodigo() {
 		return codigo;
@@ -15,12 +15,11 @@ public class TipoServico {
 	}
 
 	public String getNome() {
-		return nome;
+		return descricao;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.descricao = nome;
 	}
-	
-	
+
 }
