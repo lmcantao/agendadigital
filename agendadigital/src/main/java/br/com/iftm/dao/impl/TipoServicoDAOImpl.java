@@ -1,10 +1,10 @@
 package br.com.iftm.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,9 +14,6 @@ import br.com.iftm.entity.TipoServico;
 
 @Repository
 public class TipoServicoDAOImpl implements TipoServicoDAO {
-
-	private List<TipoServico> lista = new ArrayList<>();
-	// private int indice = 0;
 
 	// Metodo necessario para manipular o banco.
 	@Autowired
@@ -33,10 +30,7 @@ public class TipoServicoDAOImpl implements TipoServicoDAO {
 
 	@Override
 	public List<TipoServico> read() {
-
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(TipoServico.class);
-
-		return criteria.list();
+		return sessionFactory.getCurrentSession().createCriteria(TipoServico.class).list();
 	}
 
 	@Override
@@ -44,7 +38,7 @@ public class TipoServicoDAOImpl implements TipoServicoDAO {
 
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(TipoServico.class);
 
-		criteria.add(Restrictions.like("nome", nome).ignoreCase());
+		criteria.add(Restrictions.like("nome", nome, MatchMode.ANYWHERE).ignoreCase());
 
 		return criteria.list();
 	}
@@ -65,7 +59,6 @@ public class TipoServicoDAOImpl implements TipoServicoDAO {
 		tipoServico.setCodigo(id);
 
 		sessionFactory.getCurrentSession().delete(tipoServico);
-		// sessionFactory.getCurrentSession().flush();
 	}
 
 }

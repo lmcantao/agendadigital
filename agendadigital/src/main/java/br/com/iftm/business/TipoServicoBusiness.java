@@ -7,52 +7,50 @@ import br.com.iftm.entity.TipoServico;
 public interface TipoServicoBusiness {
 
 	/**
-	 * Metodo responsável por garantir os parametros obrigatórios, bom como
-	 * solicitar a camada de acesso a dados que persista o objeto
-	 * {@link TipoServico}
+	 * Metodo responsavel por garantir parametros obrigatorios, bem como solicitar a
+	 * camada de acesso a dados que persista o objeto {@link TipoServico}.
 	 * 
-	 * @param tipoServico Objeto a ser persistido
-	 * @return Objeto persistido
+	 * @param tipoServico Objeto a ser persistido.
+	 * @return Objeto persistido.
 	 * @throws BusinessException
 	 */
 	TipoServico create(TipoServico tipoServico) throws BusinessException;
 
 	/**
-	 * Metodo responsavel por garantir os parametros dos objetos {@link TipoServico}
-	 * para retorná-los
+	 * Metodo responsavel por solicitar da base de datos todos os objetos
+	 * {@link TipoServico}.
 	 * 
-	 * @return lista de {@link TipoServico}
+	 * @return Lista de {@link TipoServico}.
 	 * @throws BusinessException
 	 */
 	List<TipoServico> read() throws BusinessException;
 
 	/**
-	 * Metodo responsavel por garantir os parametros obrigatórios para que se possa
-	 * recuperar da base de dados os objetos {@link TipoServico}, cujo seu nome
-	 * possua parte do parametro
+	 * Metodo responsavel por garantir parametros obrigatorios, bem como solicitar
+	 * da base de datos todos os objetos {@link TipoServico}, cujo nome possua parte
+	 * do parametro Nome.
 	 * 
-	 * @param nome Parte do nome a ser buscado
-	 * @return Lista de {@link TipoServico}
+	 * @param nome Parte do nome a ser buscado.
+	 * @return Lista de {@link TipoServico}.
 	 * @throws BusinessException
 	 */
 	List<TipoServico> readByName(String nome) throws BusinessException;
 
 	/**
-	 * Metodo responsavel garantir os parametros obrigatórios para que se possa
-	 * persistir (atualizar) os dados na base o objeto desejado {@link TipoServico}
+	 * Metodo responsavel por garantir parametros obrigatorios, bem como atualizar
+	 * na base de dados o objeto {@link TipoServico}.
 	 * 
-	 * @param tipoServico Objeto a ser persistido
-	 * @return Objeto persistido
+	 * @param tipoServico objeto a ser persistido.
+	 * @return
 	 * @throws BusinessException
 	 */
 	TipoServico update(TipoServico tipoServico) throws BusinessException;
 
 	/**
-	 * Metodo responsável por garantir os parametros obrigatórios para que se possa
-	 * deletar da base de dados o objeto {@link TipoServico}, cujo código seja igual
-	 * ao parametro de entrada
+	 * Metodo responsavel por excluir da base de dados o objeto {@link TipoServico}
+	 * referente ao id informado.
 	 * 
-	 * @param id Código a ser buscado e deletado
+	 * @param id identificador do objeto {@link TipoServico} a ser excluido.
 	 * @throws BusinessException
 	 */
 	void delete(Integer id) throws BusinessException;
